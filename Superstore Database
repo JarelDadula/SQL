@@ -1,4 +1,4 @@
-#This project utilizes the following Superstore data: 
+#This project utilizes the following data from a "Superstore": 
 
 CREATE TABLE superstore (
     item_id INTEGER PRIMARY KEY,
@@ -51,3 +51,18 @@ ORDER BY price;
 #Show a statistic about the price for items in the category of "Electronics".
 SELECT AVG (average_rating), 'Electronics'
 FROM superstore;
+
+#Show a statistic about the price for items in the category of "Kitchen Supplies"
+SELECT AVG (price), category
+FROM superstore
+WHERE category="Kitchen Supplies";
+
+#How much stock do we have in each category?
+SELECT SUM (stock_quantity), category
+FROM superstore
+GROUP BY category;
+
+#What are the top 5 items with the highest average rating?
+SELECT item_name, average_rating
+FROM superstore
+ORDER BY average_rating desc;
